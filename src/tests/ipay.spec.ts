@@ -13,14 +13,14 @@ describe('Ipay API', () => {
 		failureUrl: process.env.IPAY_FAILURE_URL,
 		cancelUrl: process.env.IPAY_CANCEL_URL,
 	});
-
+	let getOrderId: string;
 	it('should create a payment', async () => {
 		const payment = await ipay.createPayment({
 			amount: 100,
 			referenceId: refId,
 			description: 'Payment for something',
 		});
-
+		getOrderId = payment.orderId;
 		expect(payment).toBeDefined();
 		expect(payment.message).toBeDefined();
 		expect(payment.paymentUrl).toBeDefined();
@@ -39,7 +39,7 @@ describe('Ipay API', () => {
 	});
 
 	it('should be able to query a payment by OrderId', async () => {
-		const checkStatusByRefId = await ipay.checkStatusByOrderId('ZLLTF104-504854D1806C5');
+		const checkStatusByRefId = await ipay.checkStatusByOrderId(getOrderId);
 
 		expect(checkStatusByRefId).toBeDefined();
 		expect(checkStatusByRefId.status).toBeDefined();
