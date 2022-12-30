@@ -1,0 +1,29 @@
+name: Test Suite
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: sudo timedatectl set-timezone "Asia/Dhaka"
+      - run: yarn ci
+      - run: yarn lint
+      - run: yarn formatcheck
+      - run: yarn build
+      - run: yarn test
+        env:
+          IPAY_BASE_URL: ${{secrets.IPAY_BASE_URL}}
+          IPAY_API_KEY: ${{secrets.IPAY_API_KEY}}
+          IPAY_SUCCESS_URL: ${{secrets.IPAY_SUCCESS_URL}}
+          IPAY_FAILURE_URL: ${{secrets.IPAY_FAILURE_URL}}
+          IPAY_CANCEL_URL: ${{secrets.IPAY_CANCEL_URL}}

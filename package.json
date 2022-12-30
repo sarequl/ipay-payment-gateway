@@ -1,0 +1,72 @@
+{
+	"name": "ipay-payment-gateway",
+	"version": "1.0.0",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"scripts": {
+		"build": "tsup",
+		"lint": "eslint .",
+		"formatcheck": "prettier -c .",
+		"format": "prettier -c -w .",
+		"ci": "yarn --frozen-lockfile",
+		"test": "jest",
+		"release": "changeset publish"
+	},
+	"repository": "https://github.com/sarequl/ipay-payment-gateway",
+	"author": "sarequl <sarequlbasar@gmail.com>",
+	"license": "MIT",
+	"devDependencies": {
+		"@changesets/changelog-github": "^0.4.6",
+		"@changesets/cli": "^2.24.3",
+		"@swc/core": "^1.2.241",
+		"@swc/jest": "^0.2.22",
+		"@types/dotenv": "^8.2.0",
+		"@types/jest": "^28.1.7",
+		"@types/node": "^18.7.8",
+		"@types/node-fetch": "^2.6.2",
+		"@typescript-eslint/eslint-plugin": "^5.33.1",
+		"@typescript-eslint/parser": "^5.33.1",
+		"dotenv": "^16.0.3",
+		"eslint": "^8.22.0",
+		"jest": "^28.1.3",
+		"prettier": "^2.7.1",
+		"tsup": "^6.2.2",
+		"typescript": "^4.7.4"
+	},
+	"dependencies": {
+		"node-fetch": "^2.6.7"
+	},
+	"keywords": [
+		"ipay",
+		"ipaybd",
+		"ipay-pg",
+		"ipay-nodejs",
+		"ipaybd-nodejs",
+		"ipay-express",
+		"ipaybd-express",
+		"ipay-api-library",
+		"ipaybd-api-library",
+		"nodejs",
+		"typescript",
+		"npm",
+		"javascript",
+		"ipay-online-payment",
+		"ipaybd-online-payment",
+		"ipay-payment-gateway",
+		"ipaybd-payment-gateway",
+		"ipay-payment",
+		"ipaybd-payment"
+	],
+	"jest": {
+		"moduleFileExtensions": [
+			"ts",
+			"js"
+		],
+		"rootDir": "src",
+		"testRegex": ".spec.ts$",
+		"transform": {
+			"^.+\\.(t|j)s$": "@swc/jest"
+		},
+		"testEnvironment": "node"
+	}
+}

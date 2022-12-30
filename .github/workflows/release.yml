@@ -1,0 +1,38 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: sudo timedatectl set-timezone "Asia/Dhaka"
+      - run: yarn ci
+      - run: yarn lint
+      - run: yarn formatcheck
+      - run: yarn build
+      - run: yarn test
+        env:
+          IPAY_BASE_URL: ${{secrets.IPAY_BASE_URL}}
+          IPAY_API_KEY: ${{secrets.IPAY_API_KEY}}
+          IPAY_SUCCESS_URL: ${{secrets.IPAY_SUCCESS_URL}}
+          IPAY_FAILURE_URL: ${{secrets.IPAY_FAILURE_URL}}
+          IPAY_CANCEL_URL: ${{secrets.IPAY_CANCEL_URL}}
+
+      - name: Create Release Pull Request or Publish to npm
+        uses: changesets/action@v1
+        with:
+          publish: yarn release
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
