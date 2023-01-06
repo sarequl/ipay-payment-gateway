@@ -49,8 +49,8 @@ const ipayConfig = {
 	cancelUrl: 'https://example.com/cancel',
 };
 
-const ipay = new IpayGateway(ipayConfig);
-module.exports = ipay;
+const Ipay = new IpayGateway(ipayConfig);
+module.exports = Ipay;
 ```
 
 ### `typescript`
@@ -69,8 +69,8 @@ const ipayConfig: IpayConstructor = {
 	cancelUrl: 'https://example.com/cancel',
 };
 
-const ipay = new IpayGateway(ipayConfig);
-export default ipay;
+const Ipay = new IpayGateway(ipayConfig);
+export default Ipay;
 ```
 
 ---
@@ -89,7 +89,7 @@ const paymentRequest = {
 
 //optional - you can set a different URL. Else it will use the main config URL.
 
-const result = await ipay.createPayment(paymentRequest);
+const result = await Ipay.createPayment(paymentRequest);
 console.log(result);
 ```
 
@@ -98,7 +98,7 @@ console.log(result);
 ## Check payment status by Reference ID
 
 ```javascript
-const result = await ipay.checkStatusByRefId('<Reference ID you have passed while creating the order.>');
+const result = await Ipay.checkStatusByRefId('<Reference ID you have passed while creating the order.>');
 ```
 
 ---
@@ -106,7 +106,7 @@ const result = await ipay.checkStatusByRefId('<Reference ID you have passed whil
 ## Search Transaction
 
 ```javascript
-const result = await ipay.checkStatusByOrderId('Order ID returned by ipay');
+const result = await Ipay.checkStatusByOrderId('Order ID returned by ipay');
 ```
 
 ---
