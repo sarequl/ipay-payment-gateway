@@ -2,8 +2,9 @@
 
 Nodejs library to accept ipay (ipay.com.bd) payments on your backend application
 
-![CodeQL](https://github.com/sarequl/ipay-payment-gateway/workflows/CodeQL/badge.svg)
-![Test for linting and formatting](https://github.com/sarequl/ipay-payment-gateway/workflows/Test%20for%20linting%20and%20formatting/badge.svg)
+![Release](https://github.com/sarequl/ipay-payment-gateway/actions/workflows/release.yml/badge.svg)
+![Test for linting and formatting](https://github.com/sarequl/ipay-payment-gateway/actions/workflows/test.yml/badge.svg)
+
 ![Publish to NPM and Github Packages](https://nodei.co/npm/ipay-payment-gateway.png?mini=true)
 
 ## Features
