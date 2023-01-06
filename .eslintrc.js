@@ -12,7 +12,7 @@ module.exports = {
 	plugins: ['@typescript-eslint'],
 	rules: {
 		indent: ['error', 'tab'],
-		'linebreak-style': ['error', 'windows'],
+		'linebreak-style': 'off',
 		quotes: ['error', 'single'],
 		semi: ['error', 'always'],
 	},
